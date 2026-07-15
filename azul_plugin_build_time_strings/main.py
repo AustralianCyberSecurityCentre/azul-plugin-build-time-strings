@@ -3,7 +3,7 @@
 This can help infer timezone of build chain or other interesting features.
 """
 
-from azul_runner import FV, BinaryPlugin, Feature, Job, State, add_settings, cmdline_run
+from azul_runner import FV, BinaryPlugin, Feature, Job, add_settings, cmdline_run
 
 from .library import extract_features
 
