@@ -34,15 +34,12 @@ class AzulPluginBuildTimeStrings(BinaryPlugin):
     def execute(self, job: Job):
         """Run across any windows executable with content."""
         build_time_features = []
-        job_data = job.get_data()
-        if job_data is None:
-            return State(State.Label.ERROR_EXCEPTION, message="Job contained no data.")
 
         # We'll receive a list of tuples. These will contain a string which
         # contains a date/time close the compilation time of the file, and
         # another string which represents a possible timezone, based on a
         # comparison between the date and the compile time.
-        features = extract_features(job_data.read())
+        features = extract_features(job.get_data().read())
         for context, timezone, offset in features:
             # The main value will be the string featuring the datetime, but
             # we'll use the timezone string as a label, rather than its own
